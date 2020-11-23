@@ -30,8 +30,9 @@ def filter_text(text):
 def get_intent(question):
     for intent, intent_data in BOT_CONFIG['intents'].items():
         for example in intent_data['examples']:
-            dist = edit_distance(filter_text(example), filter_text(question))   # Levenshtein distance
-            if dist / len(example) < 0.4:
+            filtered_example = filter_text(example)
+            dist = edit_distance(filtered_example, filter_text(question))   # Levenshtein distance
+            if dist / len(filtered_example) < 0.4:
                 return intent
 
 
