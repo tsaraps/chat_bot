@@ -1,23 +1,6 @@
 import random
 from nltk import edit_distance
-
-BOT_CONFIG = {
-    'intents': {
-        'hello': {
-            'examples': ['привет', 'добрый день', 'здравствуйте'],
-            'responses': ['Привет, человек', 'Добрый день. Как поживаешь?']
-        },
-        'bye': {
-            'examples': ['пока', 'до свидания', 'досвидания', 'прощай'],
-            'responses': ['Счастливо', 'Еще увидимся', 'Если что, я тут. Возвращайтесь']
-        }
-    },
-    'failure_phrases': [
-        'Попробуйте написать по-другому',
-        'Что-то не понятно',
-        'Я же всего лишь бот! Сформулируйте попроще'
-    ]
-}
+from bot_config import BOT_CONFIG
 
 
 def filter_text(text):
@@ -69,7 +52,7 @@ def bot(question):
     if answer:
         return answer
 
-    # Using plug
+    # Using plugs
     answer = get_failure_phrases()
 
     return answer
